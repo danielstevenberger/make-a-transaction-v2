@@ -1,3 +1,4 @@
+import { TransferService } from "./../services/transfer.service";
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Observable } from "rxjs";
@@ -18,7 +19,10 @@ export class TransferComponent implements OnInit {
   //boolean to notify and overdraw over $500
   overdrawn = false;
 
-  constructor(private accountService: AccountService) {}
+  constructor(
+    private accountService: AccountService,
+    private transferService: TransferService
+  ) {}
 
   //Creates the reactive form with validators.
   transferForm = new FormGroup({
@@ -27,7 +31,7 @@ export class TransferComponent implements OnInit {
   });
 
   //When the user submits the form
-  onSubmit(balance: number) {
+  onSubmit(balance: number, fromAccount: string) {
     // If the form is not valid and not overdrawn
     if (
       !this.transferForm.valid &&
@@ -59,11 +63,11 @@ export class TransferComponent implements OnInit {
       )
     ) {
       // Notifies the modal to open and sends the form data to it.
-      // this.transferService.openConfirm(
-      //   this.account.accountName,
-      //   this.transferForm.get("toAccount").value,
-      //   this.transferForm.get("amount").value
-      // );
+      this.transferService.openConfirm(
+        fromAccount,
+        this.transferForm.get("toAccount").value,
+        this.transferForm.get("amount").value
+      );
       // resets the overdraw warning
       this.overdrawn = false;
       //resets the error message

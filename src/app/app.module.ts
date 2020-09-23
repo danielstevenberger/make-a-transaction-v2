@@ -15,6 +15,7 @@ import { TransactionsComponent } from "./transactions/transactions.component";
 import { TransactionComponent } from "./transactions/transaction/transaction.component";
 import { SearchComponent } from "./transactions/search/search.component";
 import { FilterPipe } from "./pipes/filter.pipe";
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { FilterPipe } from "./pipes/filter.pipe";
     SearchComponent,
     FilterPipe,
     TransferComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,

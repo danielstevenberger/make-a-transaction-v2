@@ -1,0 +1,21 @@
+<div class="modal" *ngIf="transfer$ | async as transfer">
+  <div class="modal__message">
+    <div class="modal__header">Please Confirm</div>
+    <div class="modal__content">
+      <p>From: {{ transfer.fromAccount }}</p>
+      <p>To: {{ transfer.toAccount }}</p>
+      <p>Amount: {{ transfer.amount | currency: "USD":"symbol":"1.2-2" }}</p>
+    </div>
+    <div class="modal__buttons">
+      <button
+        class="modal__btn modal__btn--transfer"
+        (click)="onTransfer(transfer)"
+      >
+        Transfer
+      </button>
+      <button class="modal__btn modal__btn--cancel" (click)="onCancel()">
+        Cancel
+      </button>
+    </div>
+  </div>
+</div>

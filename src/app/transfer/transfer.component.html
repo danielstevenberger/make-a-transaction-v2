@@ -1,6 +1,9 @@
 <div class="transfer" *ngIf="account$ | async as account">
   <!-- Reactive Form -->
-  <form [formGroup]="transferForm" (ngSubmit)="onSubmit(account.balance)">
+  <form
+    [formGroup]="transferForm"
+    (ngSubmit)="onSubmit(account.balance, account.accountName)"
+  >
     <div class="form-group">
       <label for="fromAccount">From Account</label>
       <!-- Disabled input displaying an account and balance.
