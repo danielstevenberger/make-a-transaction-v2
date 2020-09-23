@@ -1,7 +1,9 @@
+import { TransferComponent } from "./transfer/transfer.component";
+
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { HttpClientModule } from "@angular/common/http";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { OrderModule } from "ngx-order-pipe";
 
 import { AppComponent } from "./app.component";
@@ -12,7 +14,7 @@ import { CardComponent } from "./card-container/card/card.component";
 import { TransactionsComponent } from "./transactions/transactions.component";
 import { TransactionComponent } from "./transactions/transaction/transaction.component";
 import { SearchComponent } from "./transactions/search/search.component";
-import { FilterPipe } from './pipes/filter.pipe';
+import { FilterPipe } from "./pipes/filter.pipe";
 
 @NgModule({
   declarations: [
@@ -25,8 +27,15 @@ import { FilterPipe } from './pipes/filter.pipe';
     TransactionComponent,
     SearchComponent,
     FilterPipe,
+    TransferComponent,
   ],
-  imports: [BrowserModule, HttpClientModule, FormsModule, OrderModule],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    FormsModule,
+    OrderModule,
+    ReactiveFormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
