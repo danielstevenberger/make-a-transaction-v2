@@ -1,6 +1,17 @@
 <div class="transactions">
   <app-search></app-search>
-  <ng-container *ngFor="let transaction of transactions | async">
-    <app-transaction [transaction]="transaction"></app-transaction>
+  <ng-container *ngIf="transactionData$ | async as transactionData">
+    <ng-container
+      *ngFor="
+        let transaction of transactionData.transactions
+          | orderBy
+            : transactionData.search.sort
+            : transactionData.search.order == 'desc'
+            : true
+          | filter: transactionData.search.search
+      "
+    >
+      <app-transaction [transaction]="transaction"></app-transaction>
+    </ng-container>
   </ng-container>
 </div>
