@@ -1,1 +1,5 @@
-<div class="transactions">test</div>
+<div class="transactions">
+  <ng-container *ngFor="let transaction of transactions">
+    <app-transaction [transaction]="transaction"></app-transaction>
+  </ng-container>
+</div>
