@@ -8,5 +8,7 @@
   <!-- Creates the transfer card -->
   <div class="card--content" *ngIf="cardType === 'transfer'"></div>
   <!-- Creates the transaction card -->
-  <div class="card--content" *ngIf="cardType === 'transactions'"></div>
+  <div class="card--content" *ngIf="cardType === 'transactions'">
+    <app-transactions></app-transactions>
+  </div>
 </div>
