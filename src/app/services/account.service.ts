@@ -32,11 +32,9 @@ export class AccountService {
   }
 
   subtractBalance(amount: number) {
-    let account: Account;
-    this.account$.subscribe((res) => (account = { ...res }));
-
-    account.balance = Math.round((account.balance - amount) * 100) / 100;
-
-    this.accountSubject.next(account);
+    // let account: Account;
+    // this.account$.subscribe((res) => (account = { ...res }));
+    // account.balance = Math.round((account.balance - amount) * 100) / 100;
+    // this.accountSubject.next(account);
   }
 }
