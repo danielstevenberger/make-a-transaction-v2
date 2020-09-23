@@ -6,7 +6,7 @@
       placeholder="Search by typing..."
       onfocus="this.placeholder = ''"
       onblur="this.placeholder='Search by typing...'"
-      [(ngModel)]="search"
+      [(ngModel)]="searchFilter.search"
       (keyup)="searchBy()"
     />
     <button class="search__btn" (click)="clear()">X</button>
@@ -17,25 +17,28 @@
     <button
       class="sort__btn"
       (click)="sortBy('date')"
-      [class.btn-active]="active == 'date'"
+      [class.btn-active]="searchFilter.sort == 'date'"
     >
-      DATE {{ active == "date" ? order : "" }}
+      DATE
+      {{ displaySymbol("date") }}
     </button>
     <!-- Determines if the button is active and ascending or descending -->
     <button
       class="sort__btn"
       (click)="sortBy('beneficiary')"
-      [class.btn-active]="active == 'beneficiary'"
+      [class.btn-active]="searchFilter.sort == 'beneficiary'"
     >
-      BENEFICIARY {{ active == "beneficiary" ? order : "" }}
+      BENEFICIARY
+      {{ displaySymbol("beneficiary") }}
     </button>
     <!-- Determines if the button is active and ascending or descending -->
     <button
       class="sort__btn"
       (click)="sortBy('amount')"
-      [class.btn-active]="active == 'amount'"
+      [class.btn-active]="searchFilter.sort == 'amount'"
     >
-      AMOUNT {{ active == "amount" ? order : "" }}
+      AMOUNT
+      {{ displaySymbol("amount") }}
     </button>
   </div>
 </div>

@@ -1,4 +1,7 @@
 import { Component, OnInit } from "@angular/core";
+import { Observable } from "rxjs";
+import { Search } from "src/app/models/search.model";
+import { SearchService } from "src/app/services/search.service";
 import { TransactionsService } from "src/app/services/transactions.service";
 
 @Component({
@@ -7,37 +10,55 @@ import { TransactionsService } from "src/app/services/transactions.service";
   styleUrls: ["./search.component.scss"],
 })
 export class SearchComponent implements OnInit {
-  //Ascending Descending character
-  order = "\u25BC";
+  searchFilter: Search;
 
-  //The current active button
-  active = "date";
-
-  //Whats in the search field.
-  search = "";
-
-  constructor() {}
+  constructor(private searchService: SearchService) {}
 
   //clears the search field.
   clear() {
-    this.search = "";
+    this.searchFilter.search = "";
     this.searchBy();
   }
 
   //Notifies the transaction service what is being entered in the search field.
-  searchBy() {}
-
-  //Determines what button is active and whether its descending or ascending.
-  sortBy(type: string) {
-    if (this.active == type) {
-      if (this.order == "\u25B2") {
-        this.order = "\u25BC";
-      } else {
-        this.order = "\u25B2";
-      }
-    }
-    this.active = type;
+  searchBy() {
+    this.searchService.searchBy(this.searchFilter.search);
   }
 
-  ngOnInit(): void {}
+  //Determines what button is active and whether its descending or ascending.
+  sortBy(sort: string) {
+    if (this.searchFilter.sort == sort) {
+      if (this.searchFilter.order == "asc") {
+        this.searchFilter.order = "desc";
+        this.searchService.orderBy("desc");
+      } else {
+        this.searchFilter.order = "asc";
+        this.searchService.orderBy("asc");
+      }
+    }
+    this.searchService.sortBy(sort);
+    this.searchFilter.sort = sort;
+  }
+
+  //displays the proper symbol
+  displaySymbol(sort: string) {
+    if (sort == this.searchFilter.sort) {
+      return this.searchFilter.order == "asc" ? "\u25BC" : "\u25B2";
+    }
+  }
+
+  ngOnInit(): void {
+    //Sends first stream of data
+    const searchFilterInit: Search = {
+      order: "asc",
+      sort: "date",
+      search: "",
+    };
+    this.searchService.searchInit(searchFilterInit);
+
+    //Subscribes to the search observable
+    this.searchService
+      .getSearchFilter()
+      .subscribe((searchFilter) => (this.searchFilter = searchFilter));
+  }
 }
