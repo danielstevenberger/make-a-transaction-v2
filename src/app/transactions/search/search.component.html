@@ -1,0 +1,41 @@
+<div class="search">
+  <div class="search__bar">
+    <!-- Uses two-way binding to update as the user types in the search field -->
+    <input
+      type="text"
+      placeholder="Search by typing..."
+      onfocus="this.placeholder = ''"
+      onblur="this.placeholder='Search by typing...'"
+      [(ngModel)]="search"
+      (keyup)="searchBy()"
+    />
+    <button class="search__btn" (click)="clear()">X</button>
+  </div>
+  <div class="sort">
+    <div class="sort__by">Sort by</div>
+    <!-- Determines if the button is active and ascending or descending -->
+    <button
+      class="sort__btn"
+      (click)="sortBy('date')"
+      [class.btn-active]="active == 'date'"
+    >
+      DATE {{ active == "date" ? order : "" }}
+    </button>
+    <!-- Determines if the button is active and ascending or descending -->
+    <button
+      class="sort__btn"
+      (click)="sortBy('beneficiary')"
+      [class.btn-active]="active == 'beneficiary'"
+    >
+      BENEFICIARY {{ active == "beneficiary" ? order : "" }}
+    </button>
+    <!-- Determines if the button is active and ascending or descending -->
+    <button
+      class="sort__btn"
+      (click)="sortBy('amount')"
+      [class.btn-active]="active == 'amount'"
+    >
+      AMOUNT {{ active == "amount" ? order : "" }}
+    </button>
+  </div>
+</div>
