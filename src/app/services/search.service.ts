@@ -20,6 +20,16 @@ export class SearchService {
   }
 
   sortBy(sort: string) {
+    if (this.searchFilter.sort == sort) {
+      if (this.searchFilter.order == "asc") {
+        this.searchFilter.order = "desc";
+        this.orderBy("desc");
+      } else {
+        this.searchFilter.order = "asc";
+        this.orderBy("asc");
+      }
+    }
+
     this.searchFilter.sort = sort;
     this.searchSubject.next(this.searchFilter);
   }

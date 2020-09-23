@@ -1,4 +1,4 @@
-import { map, retry } from "rxjs/operators";
+import { map } from "rxjs/operators";
 import { Search } from "src/app/models/search.model";
 import { SearchService } from "src/app/services/search.service";
 import { Component, OnInit } from "@angular/core";

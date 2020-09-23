@@ -1,4 +1,4 @@
-<div class="search">
+<div class="search" *ngIf="searchFilter$ | async as searchFilter">
   <div class="search__bar">
     <!-- Uses two-way binding to update as the user types in the search field -->
     <input
@@ -7,7 +7,7 @@
       onfocus="this.placeholder = ''"
       onblur="this.placeholder='Search by typing...'"
       [(ngModel)]="searchFilter.search"
-      (keyup)="searchBy()"
+      (keyup)="searchBy(searchFilter.search)"
     />
     <button class="search__btn" (click)="clear()">X</button>
   </div>
@@ -20,7 +20,7 @@
       [class.btn-active]="searchFilter.sort == 'date'"
     >
       DATE
-      {{ displaySymbol("date") }}
+      {{ displaySymbol("date", searchFilter) }}
     </button>
     <!-- Determines if the button is active and ascending or descending -->
     <button
@@ -29,7 +29,7 @@
       [class.btn-active]="searchFilter.sort == 'merchant'"
     >
       BENEFICIARY
-      {{ displaySymbol("merchant") }}
+      {{ displaySymbol("merchant", searchFilter) }}
     </button>
     <!-- Determines if the button is active and ascending or descending -->
     <button
@@ -38,7 +38,7 @@
       [class.btn-active]="searchFilter.sort == 'amount'"
     >
       AMOUNT
-      {{ displaySymbol("amount") }}
+      {{ displaySymbol("amount", searchFilter) }}
     </button>
   </div>
 </div>
