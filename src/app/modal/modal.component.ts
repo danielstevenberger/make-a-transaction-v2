@@ -1,3 +1,4 @@
+import { FormControl } from "@angular/forms";
 import { TransactionsService } from "src/app/services/transactions.service";
 import { Transaction } from "./../models/transaction.model";
 import { Observable } from "rxjs";
@@ -29,7 +30,8 @@ export class ModalComponent implements OnInit {
 
   //If the user clicks the transfer button. A function from from the transfer service is called make the transfer happen. After the modal is closed/
   onTransfer(transfer: Transfer) {
-    this.transactionService.addTransaction();
+    this.transactionService.addTransaction(transfer);
+    this.transferService.resetForm();
     this.transferService.closeConfirm();
   }
 }

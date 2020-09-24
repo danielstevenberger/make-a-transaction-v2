@@ -66,7 +66,8 @@ export class TransferComponent implements OnInit {
       this.transferService.openConfirm(
         fromAccount,
         this.transferForm.get("toAccount").value,
-        this.transferForm.get("amount").value
+        this.transferForm.get("amount").value,
+        this.transferForm
       );
       // resets the overdraw warning
       this.overdrawn = false;
