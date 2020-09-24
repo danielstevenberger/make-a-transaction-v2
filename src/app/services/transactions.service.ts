@@ -51,6 +51,8 @@ export class TransactionsService {
       .pipe(map((transactions) => [...transactions, newTransaction]))
       .subscribe((res) => (transactions = res));
 
+    console.log(transactions);
+
     this.transactionSubject.next(transactions);
   }
 }

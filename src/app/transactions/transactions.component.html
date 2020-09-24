@@ -6,7 +6,7 @@
         let transaction of transactionData.transactions
           | orderBy
             : transactionData.search.sort
-            : transactionData.search.order == 'desc'
+            : reverse(transactionData.search)
             : true
           | filter: transactionData.search.search
       "

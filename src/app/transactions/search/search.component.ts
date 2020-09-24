@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
 import { Search } from "src/app/models/search.model";
 import { SearchService } from "src/app/services/search.service";
-import { TransactionsService } from "src/app/services/transactions.service";
 
 @Component({
   selector: "app-search",
@@ -33,15 +32,15 @@ export class SearchComponent implements OnInit {
   //displays the proper symbol
   displaySymbol(sort: string, searchFilter: Search) {
     if (sort == searchFilter.sort) {
-      return searchFilter.order == "asc" ? "\u25BC" : "\u25B2";
+      return searchFilter.order == "desc" ? "\u25BC" : "\u25B2";
     }
   }
 
   ngOnInit(): void {
     //Sends first stream of data
     const searchFilterInit: Search = {
-      order: "asc",
-      sort: "date",
+      order: "desc",
+      sort: "transactionDate",
       search: "",
     };
     this.searchService.searchInit(searchFilterInit);

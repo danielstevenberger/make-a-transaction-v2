@@ -16,11 +16,11 @@
     <!-- Determines if the button is active and ascending or descending -->
     <button
       class="sort__btn"
-      (click)="sortBy('date')"
-      [class.btn-active]="searchFilter.sort == 'date'"
+      (click)="sortBy('transactionDate')"
+      [class.btn-active]="searchFilter.sort == 'transactionDate'"
     >
       DATE
-      {{ displaySymbol("date", searchFilter) }}
+      {{ displaySymbol("transactionDate", searchFilter) }}
     </button>
     <!-- Determines if the button is active and ascending or descending -->
     <button

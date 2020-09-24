@@ -1,8 +1,5 @@
-import { FormControl } from "@angular/forms";
 import { TransactionsService } from "src/app/services/transactions.service";
-import { Transaction } from "./../models/transaction.model";
 import { Observable } from "rxjs";
-import { Input } from "@angular/core";
 import { Component, OnInit } from "@angular/core";
 import { TransferService } from "../services/transfer.service";
 import { Transfer } from "../models/transfer.model";
