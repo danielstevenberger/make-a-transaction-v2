@@ -12,7 +12,6 @@ import { CardComponent } from "./card-container/card/card.component";
 import { TransactionsComponent } from "./transactions/transactions.component";
 import { TransactionComponent } from "./transactions/transaction/transaction.component";
 import { TransferComponent } from "./transfer/transfer.component";
-
 import { SearchComponent } from "./transactions/search/search.component";
 import { ModalComponent } from "./modal/modal.component";
 
