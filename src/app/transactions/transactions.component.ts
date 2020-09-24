@@ -19,6 +19,7 @@ export class TransactionsComponent implements OnInit {
     private searchService: SearchService
   ) {}
 
+  //Reverses the order for dates
   reverse(search: Search) {
     if (search.sort == "transactionDate") {
       return search.order == "desc";
@@ -26,6 +27,7 @@ export class TransactionsComponent implements OnInit {
     return search.order == "asc";
   }
 
+  //Gets the serach observable and transaction obersvable and combines them into one
   ngOnInit(): void {
     const transactions$ = this.transactionService.getTransactions();
     const searchFilter$ = this.searchService.getSearchFilter();

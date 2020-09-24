@@ -1,5 +1,3 @@
-import { TransferComponent } from "./transfer/transfer.component";
-
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { HttpClientModule } from "@angular/common/http";
@@ -13,9 +11,12 @@ import { CardContainerComponent } from "./card-container/card-container.componen
 import { CardComponent } from "./card-container/card/card.component";
 import { TransactionsComponent } from "./transactions/transactions.component";
 import { TransactionComponent } from "./transactions/transaction/transaction.component";
+import { TransferComponent } from "./transfer/transfer.component";
+
 import { SearchComponent } from "./transactions/search/search.component";
+import { ModalComponent } from "./modal/modal.component";
+
 import { FilterPipe } from "./pipes/filter.pipe";
-import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [

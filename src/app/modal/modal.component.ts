@@ -18,16 +18,17 @@ export class ModalComponent implements OnInit {
 
   transfer$: Observable<Transfer>;
 
+  //Gets an observable containing transfer information
   ngOnInit(): void {
     this.transfer$ = this.transferService.getTransfer();
   }
 
-  // If the user clicks the cancel button. A function from the transfer service is called to cancel the transfer..
+  // If the user clicks the cancel button
   onCancel() {
     this.transferService.closeConfirm();
   }
 
-  //If the user clicks the transfer button. A function from from the transfer service is called make the transfer happen. After the modal is closed/
+  //If the user clicks the transfer button
   onTransfer(transfer: Transfer) {
     this.transactionService.addTransaction(transfer);
     this.accountService.subtractBalance(transfer.amount);

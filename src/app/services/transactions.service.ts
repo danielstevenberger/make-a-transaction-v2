@@ -15,6 +15,7 @@ export class TransactionsService {
     Transaction[]
   > = this.transactionSubject.asObservable();
 
+  //Gets the transactions from the .json file
   constructor(private httpClient: HttpClient) {
     this.httpClient
       .get<Transaction[]>("../../assets/transaction-data/transactions.json")
@@ -30,10 +31,12 @@ export class TransactionsService {
       .subscribe((res) => this.transactionSubject.next(res));
   }
 
+  //Gets the observable containing transaction data
   getTransactions() {
     return this.transactions$;
   }
 
+  //Adds a transaction and updates the observable
   addTransaction(transfer: Transfer) {
     const newTransaction: Transaction = {
       categoryCode: "#c12020",
@@ -50,8 +53,6 @@ export class TransactionsService {
     this.transactions$
       .pipe(map((transactions) => [...transactions, newTransaction]))
       .subscribe((res) => (transactions = res));
-
-    console.log(transactions);
 
     this.transactionSubject.next(transactions);
   }

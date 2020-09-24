@@ -6,19 +6,29 @@ import { Search } from "src/app/models/search.model";
   providedIn: "root",
 })
 export class SearchService {
-  private searchFilter: Search;
+  //Initial serachFilter
+  private searchFilter: Search = {
+    order: "desc",
+    sort: "transactionDate",
+    search: "",
+  };
 
   private searchSubject = new BehaviorSubject<Search>(null);
 
   searchBy$: Observable<Search> = this.searchSubject.asObservable();
 
-  constructor() {}
+  //Gives the search filter to the observable
+  constructor() {
+    this.searchSubject.next(this.searchFilter);
+  }
 
+  //Gives the string to search by
   searchBy(search: string) {
     this.searchFilter.search = search;
     this.searchSubject.next(this.searchFilter);
   }
 
+  //Gives the category to order by
   sortBy(sort: string) {
     if (this.searchFilter.sort == sort) {
       if (this.searchFilter.order == "asc") {
@@ -34,16 +44,13 @@ export class SearchService {
     this.searchSubject.next(this.searchFilter);
   }
 
+  //Gives the order ascending or descending
   orderBy(order: string) {
     this.searchFilter.order = order;
     this.searchSubject.next(this.searchFilter);
   }
 
-  searchInit(searchFilter: Search) {
-    this.searchFilter = { ...searchFilter };
-    this.searchSubject.next(this.searchFilter);
-  }
-
+  //Gives the observable containg the serach filter
   getSearchFilter() {
     return this.searchBy$;
   }

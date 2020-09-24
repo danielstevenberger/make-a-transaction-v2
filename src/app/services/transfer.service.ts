@@ -13,7 +13,7 @@ export class TransferService {
 
   private transferForm: FormGroup;
 
-  //Used to notify that the modal shoul open and sends the data to the modal through the homecomponent..
+  //Opens the modal
   openConfirm(
     fromAccount: string,
     toAccount: string,
@@ -24,6 +24,7 @@ export class TransferService {
     this.transferForm = transferForm;
   }
 
+  //Gets the observable containing transfer information
   getTransfer() {
     return this.transfer$;
   }
@@ -33,6 +34,7 @@ export class TransferService {
     this.transferSubject.next(null);
   }
 
+  //resets the transfor from
   resetForm() {
     this.transferForm.reset();
   }

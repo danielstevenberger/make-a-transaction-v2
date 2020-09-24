@@ -8,6 +8,7 @@ import { Transaction } from "src/app/models/transaction.model";
   styleUrls: ["./transaction.component.scss"],
 })
 export class TransactionComponent implements OnInit {
+  //Gets a transaction as an input
   @Input() transaction: Transaction;
 
   constructor() {}

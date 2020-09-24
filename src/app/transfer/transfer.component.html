@@ -4,12 +4,12 @@
     [formGroup]="transferForm"
     (ngSubmit)="onSubmit(account.balance, account.accountName)"
   >
-    <div class="form-group">
+    <div class="form">
       <label for="fromAccount">From Account</label>
       <!-- Disabled input displaying an account and balance.
       Uses a data pipe and updates as the account drains. -->
       <input
-        class="disabledInput"
+        class="from__disabledInput"
         type="text"
         id="fromAccount"
         placeholder="{{ account.accountName }} - {{
@@ -18,7 +18,7 @@
         disabled
       />
     </div>
-    <div class="form-group">
+    <div class="form">
       <label for="toAccount">To Account</label>
       <!-- Input to recieve an account name.
       Has validation warnings if it is touched and not valid. -->
@@ -28,7 +28,7 @@
         id="toAccount"
         placeholder="Georgia Power Electric Company"
         onfocus="this.placeholder = ''"
-        [class.invalidInput]="
+        [class.form__invalid]="
           !transferForm.get('toAccount').valid &&
           transferForm.get('toAccount').touched
         "
@@ -41,7 +41,7 @@
         >Please enter an account name</span
       >
     </div>
-    <div class="form-group">
+    <div class="form">
       <label for="amount">Amount</label>
       <!-- Input to recieve an amount.
       Has validation warnings if it is touched and not valid. -->
@@ -53,7 +53,7 @@
         id="amount"
         placeholder="$ 0.00"
         onfocus="this.placeholder = ''"
-        [class.invalidInput]="
+        [class.form__invalid]="
           !transferForm.get('amount').valid &&
           transferForm.get('amount').touched
         "
@@ -70,6 +70,6 @@
     <span *ngIf="errorMessage">Please fill out all of the fields</span>
     <!-- Validation warning if the user tries to go below -$500 -->
     <span *ngIf="overdrawn">You cannot overdraw more than $500 </span>
-    <button class="btn" type="submit">Submit</button>
+    <button class="form__btn" type="submit">Submit</button>
   </form>
 </div>

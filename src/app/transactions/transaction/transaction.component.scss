@@ -5,7 +5,7 @@
   margin-bottom: -1px;
 }
 
-.category-code {
+.transaction__code {
   border-left: none;
   border-right: none;
   height: auto;
@@ -21,7 +21,7 @@
   color: rgb(41, 41, 41);
 }
 
-.merchant-logo {
+.transaction__logo {
   display: flex;
   align-items: center;
   margin-left: 30px;
@@ -54,7 +54,7 @@ img {
   img {
     display: none;
   }
-  .merchant-logo {
+  .transaction__logo {
     margin-left: 10px;
     margin-right: 10px;
   }
@@ -77,7 +77,7 @@ img {
   img {
     display: none;
   }
-  .merchant-logo {
+  .transaction__logo {
     margin-left: 10px;
     margin-right: 10px;
   }

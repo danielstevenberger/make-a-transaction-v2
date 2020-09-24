@@ -8,18 +8,14 @@
   border-bottom: solid 3px orange;
 }
 
-.nav--logo {
-  display: flex;
-}
-
 /* Logo has no margin. I thought it looked better hugging the left side of the screen */
-.logo {
+.nav__logo {
   height: 40px;
 }
 
 /* Navbar logo changes on smaller screens */
 @media only screen and (max-width: 600px) {
-  .logo {
+  .nav__logo {
     height: 30px;
     content: url(../../assets/images/favicon/favicon.png);
   }

@@ -13,6 +13,7 @@ export class AccountService {
 
   account$: Observable<Account> = this.accountSubject.asObservable();
 
+  //Creates an account
   constructor() {
     const account: Account = {
       accountName: "Free Checking(4692)",
@@ -21,7 +22,7 @@ export class AccountService {
     this.accountSubject.next(account);
   }
 
-  //returns the account
+  //returns an observable containing account information
   getAccount() {
     return this.account$;
   }
@@ -31,6 +32,7 @@ export class AccountService {
     return balance - amount >= -500;
   }
 
+  //Subtracts an amount from the account
   subtractBalance(amount: number) {
     let account: Account;
     this.account$.subscribe((res) => (account = { ...res }));

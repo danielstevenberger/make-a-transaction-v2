@@ -36,14 +36,8 @@ export class SearchComponent implements OnInit {
     }
   }
 
+  //Gets the observable containing a searchFilter
   ngOnInit(): void {
-    //Sends first stream of data
-    const searchFilterInit: Search = {
-      order: "desc",
-      sort: "transactionDate",
-      search: "",
-    };
-    this.searchService.searchInit(searchFilterInit);
     this.searchFilter$ = this.searchService.getSearchFilter();
   }
 }

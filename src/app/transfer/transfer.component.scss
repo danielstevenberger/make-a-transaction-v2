@@ -3,7 +3,7 @@
   width: 270px;
 }
 
-.form-group {
+.form {
   display: flex;
   flex-direction: column;
   margin-bottom: 15px;
@@ -23,11 +23,11 @@ input:focus {
   outline: none;
 }
 
-.disabledInput::placeholder {
+.from__disabledInput::placeholder {
   color: black;
 }
 
-.btn {
+.form__btn {
   margin-top: 15px;
   float: right;
   background-color: rgb(237, 110, 49);
@@ -39,15 +39,15 @@ input:focus {
   cursor: pointer;
 }
 
-.btn:focus {
+.form__btn:focus {
   outline: none;
 }
 
-.btn:hover {
+.form__btn:hover {
   background-color: rgb(237, 128, 77);
 }
 
-.invalidInput {
+.form__invalid {
   border-bottom: 1px solid rgba(255, 66, 66, 0.5);
 }
 

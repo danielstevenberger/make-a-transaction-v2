@@ -1,16 +1,16 @@
 <div class="card">
-  <div class="card--header">
-    <div class="card--img">
+  <div class="card__header">
+    <div class="card__img">
       <img src="{{ cardImage }}" alt="" />
     </div>
-    <div class="card--title">{{ cardTitle }}</div>
+    <div class="card__title">{{ cardTitle }}</div>
   </div>
   <!-- Creates the transfer card -->
-  <div class="card--content" *ngIf="cardType === 'transfer'">
+  <div class="card__content" *ngIf="cardType === 'transfer'">
     <app-transfer></app-transfer>
   </div>
   <!-- Creates the transaction card -->
-  <div class="card--content" *ngIf="cardType === 'transactions'">
+  <div class="card__content" *ngIf="cardType === 'transactions'">
     <app-transactions></app-transactions>
   </div>
 </div>

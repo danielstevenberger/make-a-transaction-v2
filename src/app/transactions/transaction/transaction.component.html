@@ -1,6 +1,6 @@
 <div class="transaction">
   <div
-    class="category-code"
+    class="transaction__code"
     [ngStyle]="{
       'background-color': transaction.categoryCode
     }"
@@ -8,7 +8,7 @@
   <div class="transaction__date">
     {{ transaction.transactionDate | date: "MMM d" }}
   </div>
-  <div class="merchant-logo">
+  <div class="transaction__logo">
     <img src="{{ transaction.merchantLogo }}" alt="" />
   </div>
   <div class="transaction__group">

@@ -8,23 +8,23 @@ $peachtreeBlue: rgb(35, 133, 150);
   background-color: $white;
 }
 
-.card--header {
+.card__header {
   background-color: $peachtreeBlue;
   display: flex;
   align-items: center;
   padding: 10px;
 }
 
-.card--img {
+.card__img {
   display: flex;
 }
 
-.card--title {
+.card__title {
   color: $white;
   width: 100%;
   text-align: center;
 }
 
-.card--content {
+.card__content {
   padding: 20px;
 }
