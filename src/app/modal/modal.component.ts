@@ -1,3 +1,4 @@
+import { AccountService } from "./../services/account.service";
 import { TransactionsService } from "src/app/services/transactions.service";
 import { Observable } from "rxjs";
 import { Component, OnInit } from "@angular/core";
@@ -11,7 +12,8 @@ import { Transfer } from "../models/transfer.model";
 export class ModalComponent implements OnInit {
   constructor(
     private transferService: TransferService,
-    private transactionService: TransactionsService
+    private transactionService: TransactionsService,
+    private accountService: AccountService
   ) {}
 
   transfer$: Observable<Transfer>;
@@ -28,6 +30,7 @@ export class ModalComponent implements OnInit {
   //If the user clicks the transfer button. A function from from the transfer service is called make the transfer happen. After the modal is closed/
   onTransfer(transfer: Transfer) {
     this.transactionService.addTransaction(transfer);
+    this.accountService.subtractBalance(transfer.amount);
     this.transferService.resetForm();
     this.transferService.closeConfirm();
   }
