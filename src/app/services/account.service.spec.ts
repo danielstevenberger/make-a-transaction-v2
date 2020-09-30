@@ -8,7 +8,7 @@ describe("AccountService", () => {
   let service: AccountService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({ providers: [AccountService] });
+    TestBed.configureTestingModule({});
     service = TestBed.inject(AccountService);
   });
 
@@ -24,7 +24,7 @@ describe("AccountService", () => {
       balance: 5824.76,
     });
   });
-  it("should return an account", () => {
+  it("should return an account observable", () => {
     let account$ = service.getAccount();
     expect(account$).toEqual(service.account$);
   });
@@ -38,7 +38,6 @@ describe("AccountService", () => {
     service.subtractBalance(5824.76);
     let account: Account;
     service.account$.subscribe((res) => (account = res));
-    console.log(account);
     expect(account).toEqual({
       accountName: "Free Checking(4692)",
       balance: 0,
