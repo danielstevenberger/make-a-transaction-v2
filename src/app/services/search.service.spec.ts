@@ -32,6 +32,14 @@ describe("SearchService", () => {
     expect(search.order).toEqual("asc");
     expect(search.sort).toEqual("transactionDate");
   });
+  it("should sort by a filter and change the order 2", () => {
+    service.sortBy("transactionDate");
+    service.sortBy("transactionDate");
+    let search: Search;
+    service.searchBy$.subscribe((res) => (search = res));
+    expect(search.order).toEqual("desc");
+    expect(search.sort).toEqual("transactionDate");
+  });
   it("should sort by a filter and keep the order", () => {
     service.sortBy("amount");
     let search: Search;
