@@ -27,7 +27,6 @@ describe("TransactionsService", () => {
   it("should recieve data from the .json file", () => {
     service.getTransactions().subscribe((transactions) => {
       expect(transactions).toBeTruthy();
-      console.log(transactions);
       expect(transactions.length).toBe(10);
     });
   });
@@ -47,7 +46,6 @@ describe("TransactionsService", () => {
     service.addTransaction(transfer);
     service.getTransactions().subscribe((transactions) => {
       expect(transactions).toBeTruthy();
-      console.log(transactions);
       expect(transactions.length).toBe(11);
       expect(transactions[10].merchant).toEqual("toAccount");
       expect(transactions[10].amount).toBe(100);
