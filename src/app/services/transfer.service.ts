@@ -1,6 +1,5 @@
 import { FormGroup } from "@angular/forms";
 import { BehaviorSubject, Observable } from "rxjs";
-// import { Transfer } from "./../interfaces/transfer.interface";
 import { Injectable } from "@angular/core";
 import { Transfer } from "../models/transfer.model";
 
