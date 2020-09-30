@@ -8,12 +8,15 @@ import { Account } from "./../models/account.model";
 export class AccountService {
   private accountSubject = new BehaviorSubject<Account>(null);
 
-  account: Account;
-
   account$: Observable<Account> = this.accountSubject.asObservable();
 
   //Creates an account
   constructor() {
+    this.initAccount();
+  }
+
+  //initalize account
+  initAccount() {
     const account: Account = {
       accountName: "Free Checking(4692)",
       balance: 5824.76,
