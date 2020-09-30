@@ -15,8 +15,12 @@ export class TransactionsService {
     Transaction[]
   > = this.transactionSubject.asObservable();
 
-  //Gets the transactions from the .json file
   constructor(private httpClient: HttpClient) {
+    this.initTransactions();
+  }
+
+  //Gets the transactions from the .json file
+  initTransactions() {
     this.httpClient
       .get<Transaction[]>("../../assets/transaction-data/transactions.json")
       .pipe(
@@ -28,7 +32,10 @@ export class TransactionsService {
           return transactions;
         })
       )
-      .subscribe((res) => this.transactionSubject.next(res));
+      .subscribe((res) => {
+        this.transactionSubject.next(res);
+        console.log(res);
+      });
   }
 
   //Gets the observable containing transaction data
